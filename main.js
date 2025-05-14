@@ -106,7 +106,7 @@ class RedEnergia {
   }
 
   if (camino[0] !== origen) {
-    return { camino: [], valorTotal: 0 }; 
+    return { camino: [], valorTotal: 0 };
   }
   return { camino, valorTotal: distancias[destino] };
 }
@@ -185,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
               selectDestino.appendChild(option2);
             }
 
-            // Visualización con Vis.js
             const nodes = Object.values(red.nodos).map(n => ({
             id: n.nombre,
             label: `${n.nombre}\n(${red.obtenerValorSegunEstrategia(n)})`
