@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graph</title>
+  <meta charset="UTF-8">
+  <title>Simulación Red Energética</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script defer src="main.js"></script>
 </head>
 <body>
-    
-    <header>
-        <h1>Graph</h1>
-        <p>Graph is a data structure that consists of a set of nodes and edges connecting them.</p>
-        <p>Graphs can be directed or undirected, weighted or unweighted.</p>
-        <p>Graphs are used in various applications such as social networks, transportation systems, and computer networks.</p>
-        <p>Common algorithms for graph traversal include Depth-First Search (DFS) and Breadth-First Search (BFS).</p>        
-    </header>
+    <h2>Simulación Red Energética</h2>
 
-    <div class = graph-container>
+    <div class="configContainer">
+    <label>Cargar nodos.csv:</label>
+    <input type="file" id="nodosCSV"><br><br>
 
-        <div class = graph>
-            aqui va el grafo
-        </div>
+    <label>Cargar matriz.csv:</label>
+    <input type="file" id="matrizCSV"><br><br>
 
-        <button>importar csv</button>
-        <button> visualiizar grafo</button>
+    <label for="estrategia">Estrategia:</label>
+    <select id="estrategia">
+    <option value="sostenibilidad">Maximizar sostenibilidad</option>
+    <option value="perdida">Minimizar pérdidas</option>
+    <option value="produccion">Maximizar producción</option>
+</select>
+    <button id="btnCargar">Cargar Red</button>
     </div>
+  
+
+  
+
+  <pre id="salida"></pre>
 </body>
 </html>
