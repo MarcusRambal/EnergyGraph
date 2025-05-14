@@ -1,4 +1,4 @@
-let red = null; // Debe estar en un scope superior
+let red = null;
 
 class NodoEnergia {
   constructor(nombre, produccion, perdida, sostenibilidad) {
@@ -70,7 +70,6 @@ class RedEnergia {
   distancias[origen] = this.obtenerValorSegunEstrategia(this.nodos[origen]);
 
   while (cola.size > 0) {
-    // Seleccionar nodo con mayor valor (porque maximizamos)
     let actual = null;
     let mejorValor = -Infinity;
 
@@ -80,7 +79,7 @@ class RedEnergia {
         actual = nodo;
       }
     }
-
+    
     if (actual === null || actual === destino) break;
     cola.delete(actual);
     visitados.add(actual);
@@ -98,7 +97,7 @@ class RedEnergia {
     }
   }
 
-  // Reconstruir camino
+
   const camino = [];
   let nodo = destino;
   while (nodo !== undefined) {
@@ -107,9 +106,8 @@ class RedEnergia {
   }
 
   if (camino[0] !== origen) {
-    return { camino: [], valorTotal: 0 }; // No hay camino
+    return { camino: [], valorTotal: 0 }; 
   }
-
   return { camino, valorTotal: distancias[destino] };
 }
 
@@ -132,8 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
       salida.textContent = 'Por favor carga ambos archivos.';
       return;
     }
-
+   
     const estrategiaElegida = selectEstrategia.value;
+ 
     red = new RedEnergia();
     red.cambiarEstrategia(estrategiaElegida);
 
@@ -167,10 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
               }
             }
 
+            /*
             // Mostrar red textual
             let resultado = red.mostrarRed();
             resultado += `\nEstrategia "${estrategiaElegida}":\n`;
             salida.textContent = resultado;
+            */
 
             // Llenar selects de nodos
             selectOrigen.innerHTML = '';
@@ -220,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (resultado.camino.length === 0) {
       salida.textContent += `\nNo hay camino disponible de ${origen} a ${destino}`;
     } else {
+      console.log(resultado.camino)
       salida.textContent += `\nCamino óptimo de "${origen}" a "${destino}": ${resultado.camino.join(' -> ')}`;
       salida.textContent += `\nValor total según estrategia "${selectEstrategia.value}": ${resultado.valorTotal.toFixed(2)}\n`;
     }
