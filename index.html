@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <title>Simulación Red Energética</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
   <script defer src="main.js"></script>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h2>Simulación Red Energética</h2>
+  <h2>Simulación Red Energética</h2>
 
-    <div class="configContainer">
+  <div class="configContainer">
     <label>Cargar nodos.csv:</label>
     <input type="file" id="nodosCSV"><br><br>
 
@@ -18,15 +21,32 @@
 
     <label for="estrategia">Estrategia:</label>
     <select id="estrategia">
-    <option value="sostenibilidad">Maximizar sostenibilidad</option>
-    <option value="perdida">Minimizar pérdidas</option>
-    <option value="produccion">Maximizar producción</option>
-</select>
-    <button id="btnCargar">Cargar Red</button>
-    </div>
-  
+      <option value="sostenibilidad">Maximizar sostenibilidad</option>
+      <option value="perdida">Minimizar pérdidas</option>
+      <option value="produccion">Maximizar producción</option>
+    </select><br><br>
 
-  
+    <button id="btnCargar">Cargar Red</button>
+  </div>
+
+  <hr>
+
+  <div class="caminoContainer">
+    <label for="origen">Origen:</label>
+    <select id="origen"></select>
+
+    <label for="destino">Destino:</label>
+    <select id="destino"></select>
+
+    <button id="btnCamino">Camino óptimo</button>
+  </div>
+
+  <hr>
+
+  <h3>Visualización del Grafo</h3>
+  <div id="grafo" style="width: 100%; height: 500px; border: 1px solid lightgray;"></div>
+
+  <hr>
 
   <pre id="salida"></pre>
 </body>
