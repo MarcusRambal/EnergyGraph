@@ -1,4 +1,4 @@
-let red = null; // Debe estar en un scope superior
+let red = null; 
 
 class NodoEnergia {
   constructor(nombre, produccion, perdida, sostenibilidad) {
@@ -107,7 +107,7 @@ class RedEnergia {
   }
 
   if (camino[0] !== origen) {
-    return { camino: [], valorTotal: 0 }; // No hay camino
+    return { camino: [], valorTotal: 0 };
   }
 
   return { camino, valorTotal: distancias[destino] };
@@ -184,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
               selectDestino.appendChild(option2);
             }
 
-            // Visualización con Vis.js
             const nodes = Object.values(red.nodos).map(n => ({
             id: n.nombre,
             label: `${n.nombre}\n(${red.obtenerValorSegunEstrategia(n)})`
